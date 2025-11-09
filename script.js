@@ -45,10 +45,10 @@ function getRandomFortune() {
 
 // Show fortune (hide cookie, show card)
 function revealFortune() {
-    // First, crack the cookie animation
+    // First, trigger the cracking animation
     cookie.classList.add('cracking');
     
-    // Wait for crack animation, then show fortune
+    // Wait for the crack animation to complete, then show fortune
     setTimeout(function() {
         // Hide cookie state
         cookieState.classList.add('hidden');
@@ -59,7 +59,7 @@ function revealFortune() {
         // Set fortune text and lucky numbers
         fortuneText.textContent = getRandomFortune();
         luckyNumbers.textContent = generateLuckyNumbers();
-    }, 600);
+    }, 600); // Match the CSS transition duration
 }
 
 // Reset to cookie state

@@ -1,0 +1,332 @@
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: linear-gradient(135deg, #a13939 0%, #8b2a2a 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* ===== TITLE ===== */
+.title {
+    font-size: 4em;
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 80px;
+    letter-spacing: 2px;
+}
+
+/* ===== COOKIE STATE ===== */
+.cookie-state {
+    display: block;
+}
+
+.cookie-state.hidden {
+    display: none;
+}
+
+/* ===== COOKIE ===== */
+.cookie {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cookie:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.cookie:active {
+    transform: scale(0.95);
+}
+
+/* Cookie Halves */
+.cookie-half {
+    position: absolute;
+    width: 70px;
+    height: 180px;
+    background: linear-gradient(135deg, #c9a66b 0%, #a67c52 100%);
+    top: 0;
+    left: 50%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cookie-left {
+    transform: translateX(-100%);
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 90px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 2;
+}
+
+.cookie-right {
+    transform: translateX(0%);
+    border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 1;
+}
+
+/* Cookie splits apart when cracking */
+.cookie.cracking .cookie-left {
+    transform: translateX(-140%) rotate(-20deg);
+}
+
+.cookie.cracking .cookie-right {
+    transform: translateX(40%) rotate(20deg);
+}
+
+/* Cookie center line - hidden initially, visible when cracking */
+.cookie-half::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cookie.cracking .cookie-half::before {
+    opacity: 1;
+}
+
+.cookie-left::before {
+    right: 0;
+}
+
+.cookie-right::before {
+    left: 0;
+}
+
+/* Cookie Dots (Chocolate Chips) */
+.cookie-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #3d2817;
+    border-radius: 50%;
+}
+
+.dot-1 { top: 35%; left: 25%; width: 6px; height: 6px; }
+.dot-2 { top: 50%; left: 20%; width: 7px; height: 7px; }
+.dot-3 { top: 65%; left: 30%; width: 5px; height: 5px; }
+.dot-4 { top: 30%; right: 25%; width: 7px; height: 7px; }
+.dot-5 { top: 45%; right: 18%; width: 6px; height: 6px; }
+.dot-6 { top: 60%; right: 28%; width: 8px; height: 8px; }
+.dot-7 { top: 40%; left: 45%; width: 5px; height: 5px; }
+.dot-8 { top: 55%; left: 48%; width: 6px; height: 6px; }
+
+/* Shadow */
+.shadow {
+    width: 140px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+/* Instruction Text */
+.instruction {
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+}
+
+/* ===== FORTUNE STATE ===== */
+.fortune-state {
+    display: none;
+}
+
+.fortune-state.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== FORTUNE CARD ===== */
+.fortune-card {
+    background: #f5f5dc;
+    border-radius: 12px;
+    padding: 50px 40px;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.fortune-text {
+    color: #2c2c2c;
+    font-size: 1.4em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #c9a66b;
+}
+
+.diamond {
+    color: #c9a66b;
+    font-size: 1.2em;
+    margin: 0 15px;
+}
+
+/* Lucky Numbers */
+.lucky-label {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.lucky-numbers {
+    color: #d4691e;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Try Again Button */
+.try-again-btn {
+    background: #d4691e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 15px 30px;
+    font-size: 1em;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(212, 105, 30, 0.3);
+}
+
+.try-again-btn:hover {
+    background: #c25a15;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(212, 105, 30, 0.4);
+}
+
+.try-again-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== BROKEN COOKIE PIECE ===== */
+.broken-cookie {
+    position: relative;
+}
+
+.cookie-piece {
+    width: 80px;
+    height: 100px;
+    background: linear-gradient(135deg, #c9a66b 0%, #a67c52 100%);
+    border-radius: 50%;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    transform: rotate(15deg);
+    position: relative;
+}
+
+/* Dots on broken piece */
+.cookie-piece::before,
+.cookie-piece::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #3d2817;
+    border-radius: 50%;
+}
+
+.cookie-piece::before {
+    top: 30%;
+    left: 35%;
+}
+
+.cookie-piece::after {
+    bottom: 35%;
+    left: 40%;
+    width: 7px;
+    height: 7px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3em;
+        margin-bottom: 60px;
+    }
+
+    .fortune-state.show {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .fortune-card {
+        padding: 40px 30px;
+    }
+
+    .fortune-text {
+        font-size: 1.2em;
+    }
+}

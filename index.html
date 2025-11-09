@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Cookie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Fortune Cookie</h1>
+        
+        <!-- Cookie State -->
+        <div class="cookie-state" id="cookieState">
+            <div class="cookie" id="cookie">
+                <div class="cookie-half cookie-left"></div>
+                <div class="cookie-half cookie-right"></div>
+                <div class="cookie-dots">
+                    <span class="dot dot-1"></span>
+                    <span class="dot dot-2"></span>
+                    <span class="dot dot-3"></span>
+                    <span class="dot dot-4"></span>
+                    <span class="dot dot-5"></span>
+                    <span class="dot dot-6"></span>
+                    <span class="dot dot-7"></span>
+                    <span class="dot dot-8"></span>
+                </div>
+            </div>
+            <div class="shadow"></div>
+            <p class="instruction">Click the cookie to reveal your fortune</p>
+        </div>
+
+        <!-- Fortune State (hidden initially) -->
+        <div class="fortune-state" id="fortuneState">
+            <div class="fortune-card">
+                <p class="fortune-text" id="fortuneText"></p>
+                <div class="divider">
+                    <span class="diamond">♦</span>
+                </div>
+                <p class="lucky-label">Lucky numbers:</p>
+                <p class="lucky-numbers" id="luckyNumbers"></p>
+                <button class="try-again-btn" id="tryAgainBtn">Try Another Cookie</button>
+            </div>
+            <div class="broken-cookie">
+                <div class="cookie-piece"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
